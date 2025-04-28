@@ -1,21 +1,21 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.8.6'
+    tools{
+        maven 'M2_HOME'
     }
+
     stages {
         stage('Checkout SCM') {
             steps {
                 git branch: 'master',
                     credentialsId: 'devopsdemo',
-                    url: 'https://github.com/sharwanNotes/seconApp.git'
+                    url: 'https://github.com/sharwanNotes/mycodes.git'
             }
         }
+
         stage('Build') {
             steps {
-                withMaven(maven: 'Maven 3.8.6') {
-                    bat 'mvn clean package'
-                }
+                bat 'mvn package'
             }
         }
     }
