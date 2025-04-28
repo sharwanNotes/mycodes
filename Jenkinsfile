@@ -1,7 +1,8 @@
 pipeline {
     agent any
-    tools{
-        maven 'M2_HOME'
+
+    tools {
+        maven 'M2_HOME'  // Make sure this matches the name in Jenkins global tools
     }
 
     stages {
@@ -15,7 +16,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn package'
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Example: Copying .war or .jar file to a deploy directory
+                bat 'copy target\\*.jar C:\ProgramData\Jenkins\.jenkins\workspace'
             }
         }
     }
