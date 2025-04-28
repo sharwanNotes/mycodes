@@ -23,7 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Example: Copying .war or .jar file to a deploy directory
-                bat 'copy target\\*.jar C:\ProgramData\Jenkins\.jenkins\workspace'
+               bat 'copy target\\*.jar C:\\ProgramData\\Jenkins\\.jenkins\\workspace'
+
             }
         }
     }
