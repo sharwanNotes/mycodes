@@ -17,14 +17,17 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'mvn clean package'
+                echo '✅ Build completed successfully.'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Example: Copying .war or .jar file to a deploy directory
-               bat 'copy target\\*.jar C:\\ProgramData\\Jenkins\\.jenkins\\workspace'
-
+                bat '''
+                    echo Deploying application...
+                    copy target\\*.jar C:\\ProgramData\\Jenkins\\.jenkins\\workspace
+                '''
+                echo '🚀 Deployment completed successfully.'
             }
         }
     }
